@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Tests/">
+    <Project Path="tests/MichelMichels.RuneScapeWiki.Tests/MichelMichels.RuneScapeWiki.Tests.csproj" Id="c6624a86-c541-4889-a47e-34f5f7595192" />
+  </Folder>
+  <Project Path="src/MichelMichels.RuneScapeWiki.Core/MichelMichels.RuneScapeWiki.Core.csproj" Id="f2c7edb9-d4dd-44ec-8210-3ab5b04e8258" />
+  <Project Path="src/MichelMichels.RuneScapeWiki.Models/MichelMichels.RuneScapeWiki.Models.csproj" Id="ae2e7be1-f6fb-4519-849a-25d0f4dc142e" />
+  <Project Path="src/MichelMichels.RuneScapeWiki/MichelMichels.RuneScapeWiki.csproj" Id="ca0ed4f4-1c7f-490c-b136-ae8bcf7e93ff" />
+</Solution>
