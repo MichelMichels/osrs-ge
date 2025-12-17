@@ -12,6 +12,10 @@ for guidance about rate limiting.
 
 ## Quick start
 
+> [!NOTE]
+> The default options contain a User-Agent of `MichelMichels.RuneScapeWiki/1.0 (+https://github.com/MichelMichels/osrs-ge)`.
+
+
 ```csharp
 // Put these usings at the top of your file
 using MichelMichels.RuneScapeWiki;
@@ -23,6 +27,7 @@ GrandExchangeClient context = new();
 // Response
 LatestResponse result = await context.GetLatest(CancellationToken.None);
 ```
+
 
 ## REST calls mapping
 
@@ -37,3 +42,4 @@ This table explains the connection between the REST API call and this library's 
 |`/api/v1/timeseries`|`GetTimeSeries(...)`|
 
 Every method supports cancellation through `CancellationToken`s.
+
