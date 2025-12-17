@@ -1,5 +1,4 @@
 ﻿using MichelMichels.RuneScapeWiki.Core;
-using MichelMichels.RuneScapeWiki.Helpers;
 using MichelMichels.RuneScapeWiki.Models;
 using System.Diagnostics;
 using System.Text.Json;
@@ -26,6 +25,30 @@ public class GrandExchangeClient : IGrandExchangeClient
     {
         return await Get<LatestResponse>($"/latest?id={id}", token);
     }
+    public async Task<MappingResponse> GetMapping(CancellationToken token)
+    {
+        return await Get<MappingResponse>("/mapping", token);
+    }
+    public async Task<AveragesResponse> GetFiveMinuteAverage(CancellationToken token)
+    {
+        return await Get<AveragesResponse>("/5m", token);
+    }
+    public async Task<AveragesResponse> GetFiveMinuteAverage(int timestamp, CancellationToken token)
+    {
+        return await Get<AveragesResponse>($"/5m?timestamp={timestamp}", token);
+    }
+    public async Task<AveragesResponse> GetOneHourAverage(CancellationToken token)
+    {
+        return await Get<AveragesResponse>("/1h", token);
+    }
+    public async Task<AveragesResponse> GetOneHourAverage(int timestamp, CancellationToken token)
+    {
+        return await Get<AveragesResponse>($"/1h?timestamp={timestamp}", token);
+    }
+    public async Task<TimeSeriesResponse> GetTimeSeries(int itemId, string timeStep, CancellationToken token)
+    {
+        return await Get<TimeSeriesResponse>($"/timeseries?id={itemId}&timestep={timeStep}", token);
+    }
 
     private async Task<T> Get<T>(string endpoint, CancellationToken token)
     {
@@ -33,7 +56,7 @@ public class GrandExchangeClient : IGrandExchangeClient
         HttpClient client = GetOrCreateHttpClient();
 
         token.ThrowIfCancellationRequested();
-        string requestUri = BuildUri(endpoint);
+        string requestUri = BuildRequestUri(endpoint);
         HttpResponseMessage response = await client.GetAsync(requestUri, token);
 
         if (!response.IsSuccessStatusCode)
@@ -49,9 +72,9 @@ public class GrandExchangeClient : IGrandExchangeClient
         return JsonSerializer.Deserialize<T>(json) ?? throw new NotSupportedException();
     }
 
-    private string BuildUri(string value)
+    private string BuildRequestUri(string value)
     {
-        return ApiEndpointConverter.GetUrl(options.Endpoint) + value;
+        return options.Endpoint + value;
     }
     private HttpClient GetOrCreateHttpClient()
     {

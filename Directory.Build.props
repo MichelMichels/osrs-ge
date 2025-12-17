@@ -1,0 +1,18 @@
+<Project>
+    <PropertyGroup>
+        <MichelMichelsRuneScapeWikiVersion>1.0.0</MichelMichelsRuneScapeWikiVersion>
+        <Version>$(MichelMichelsRuneScapeWikiVersion)</Version>
+        <FileVersion>$(MichelMichelsRuneScapeWikiVersion)</FileVersion>
+        <InformationalVersion>$(MichelMichelsRuneScapeWikiVersion)</InformationalVersion>
+	    <TargetFramework>net10.0</TargetFramework>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<RepositoryUrl>https://github.com/MichelMichels/osrs-ge</RepositoryUrl>
+		<Authors>Michel Michels</Authors>      
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+      <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+</Project>
